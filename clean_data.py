@@ -21,19 +21,19 @@ df = pd.read_csv(input_csv_file, encoding='ISO-8859-1')
 
 # Step 3: Standardize Data (Optional)
 # Standardize text data to lowercase
-df['song name'] = df['song name'].str.lower()
+# df['song name'] = df['song name'].str.lower()
 df['artist'] = df['artist'].str.lower()
 df['genre'] = df['genre'].str.lower()
 df['lyrics'] = df['lyrics'].str.lower()
 
 # Step 4: Remove Special Characters and space between words
 # You can use regular expressions to remove special characters
-df['song name'] = df['song name'].apply(lambda x: re.sub(r'[^\w\s]', '', x))
+# df['song name'] = df['song name'].apply(lambda x: re.sub(r'[^\w\s]', '', x))
 df['artist'] = df['artist'].apply(lambda x: re.sub(r'[^\w\s]', '', x))
 df['genre'] = df['genre'].apply(lambda x: re.sub(r'[^\w\s]', '', x))
 df['lyrics'] = df['lyrics'].apply(lambda x: re.sub(r'[^\w\s]', '', x))
 #remove space between words
-df['song name'] = df['song name'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
+# df['song name'] = df['song name'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
 df['artist'] = df['artist'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
 df['genre'] = df['genre'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
 df['lyrics'] = df['lyrics'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
