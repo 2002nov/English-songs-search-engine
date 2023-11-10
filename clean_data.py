@@ -32,11 +32,6 @@ df['lyrics'] = df['lyrics'].str.lower()
 df['artist'] = df['artist'].apply(lambda x: re.sub(r'[^\w\s]', '', x))
 df['genre'] = df['genre'].apply(lambda x: re.sub(r'[^\w\s]', '', x))
 df['lyrics'] = df['lyrics'].apply(lambda x: re.sub(r'[^\w\s]', '', x))
-#remove space between words
-# df['song name'] = df['song name'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
-df['artist'] = df['artist'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
-df['genre'] = df['genre'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
-df['lyrics'] = df['lyrics'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
 
 # Step 5: Tokenization (Optional)
 # If you want to tokenize text into words, you can use the following:
@@ -58,6 +53,13 @@ df['lyrics'] = df['lyrics'].apply(lambda x: ' '.join([word for word in x.split()
 
 # Step 8-10: Additional Cleaning and Preprocessing Steps (Optional)
 # You can add further steps based on your specific data and requirements.
+
+#remove space between words
+# df['song name'] = df['song name'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
+df['artist'] = df['artist'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
+df['genre'] = df['genre'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
+df['lyrics'] = df['lyrics'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
+
 
 # Step 11: Save the cleaned data to a new CSV file
 df.to_csv(output_csv_file, index=False)
