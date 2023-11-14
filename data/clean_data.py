@@ -51,9 +51,13 @@ df['lyrics'] = df['lyrics'].apply(lambda words: ' '.join([stemmer.stem(word) for
 stop_words = set(stopwords.words('english'))
 df['lyrics'] = df['lyrics'].apply(lambda x: ' '.join([word for word in x.split() if word not in stop_words]))
 
-# Step 8-10: Additional Cleaning and Preprocessing Steps (Optional)
-# You can add further steps based on your specific data and requirements.
+# Step 8 remove space between words
+# df['song name'] = df['song name'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
+df['artist'] = df['artist'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
+df['genre'] = df['genre'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
+df['lyrics'] = df['lyrics'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
 
+<<<<<<< HEAD:data/clean_data.py
 #remove space between words
 # df['song name'] = df['song name'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
 df['artist'] = df['artist'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' ', ''))
@@ -62,6 +66,10 @@ df['lyrics'] = df['lyrics'].apply(lambda x: re.sub(r'[^\w\s]', '', x).replace(' 
 
 
 # Step 11: Save the cleaned data to a new CSV file
+=======
+
+# Step 9: Save the cleaned data to a new CSV file
+>>>>>>> b9499fe7276cf29abf0302d3909d5c2e18969beb:clean_data.py
 df.to_csv(output_csv_file, index=False)
 
 print(f"Cleaned data saved to {output_csv_file}")
