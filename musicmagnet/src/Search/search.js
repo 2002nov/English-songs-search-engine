@@ -1,62 +1,84 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from '/Users/pawitapongpaew/Documents/English-songs-search-engine-/musicmagnet/src/navbar/navbar.js';
+import React, { useState } from 'react';
+import axios from 'axios';
+import Navbar from '/Users/pawitapongpaew/Desktop/MusicMagnet/musicmagnet/src/navbar/navbar.js';
 import './search.css';
-import searchicon from '/Users/pawitapongpaew/Documents/English-songs-search-engine-/musicmagnet/src/images/Searchicon.png';
+import searchicon from '/Users/pawitapongpaew/Desktop/MusicMagnet/musicmagnet/src/images/Searchicon.png';
 
 function Search() {
+
     const [inputText, setInputText] = useState('');
     const [isClicked, setIsClicked] = useState(false);
-    // const [ShowWarning, setShowWarning] = useState(false);
+    const [results, setResults] = useState([]);
     const [songClicked, setsongClicked] = useState(false);
+    const [selectedResult, setSelectedResult] = useState(null);
 
-    const handleInputChange = (e) => {
-        const newText = e.target.value;
-        setInputText(newText);
-        // setShowWarning(false);
+    // const handleInputChange = (e) => {
+    //     const newText = e.target.value;
+    //     setInputText(newText);
+    // };
+
+    const handleButtonClick = async () => {
+        try {
+            if (inputText.trim() !== '') {
+                const response = await axios.get(`http://localhost:9200/finalmusicmagnet/_search`, {
+                    multi_match: {
+                        query: inputText,
+                        fields: ['song name^4', 'artist^3', 'lyrics^2', 'genre^1'],
+                    },
+                }
+                )
+                const data = response.data
+                const result = data.hits.hits.map((hit) => hit._source)
+                setResults(result)
+            }
+        } catch (error) {
+            console.error('Error fetching search results:', error.message);
+        }
+        setIsClicked(true);
     };
 
-    const handleSongSelect = () => {
+    const handleSongSelect = (result) => {
+        setSelectedResult(result);
         setsongClicked(true);
-        // setShowWarning(false);
     };
 
-    const handleIconClick = () => {
-        // if (inputText.trim() === '') {
-        //     setShowWarning(true);
-        // } else {
-            setIsClicked(true);
-        // }
+    const renderNewBox = () => {
+        if (selectedResult) {
+            return (
+                <div className="song">
+                    <img 
+                    src={selectedResult['pic']}
+                    className="pic2"
+                    alt="new"
+                    />
+                    <h2 className="SongName">{selectedResult['song name']} ({selectedResult['year']})</h2>
+                    <div className="genre">{selectedResult['genre']}</div>
+                    <div className="Artist">{selectedResult['artist']}</div>
+                    <div className="scroll_lyrics">
+                        <div>{selectedResult['lyrics']}</div>
+                    </div>
+                </div>
+            );
+        }
+        return null;
     };
 
     const handleGoBackClick = () => {
         window.location.reload(); 
     };
-
-    const renderNewBox = () => {
-        if (songClicked) {
-            return (
-            <div className="song">
-                <h2>New Box</h2>
-                <p>This is the content of the new box.</p>
-            </div>
-            );
-        }
-        return null;
-    };
-    
     
     const renderGoback = () => {
         if (songClicked) {
             return (
                 <button className="goback" onClick={handleGoBackClick}>
-                    TOP 100 RANK
+                    TOP 3 RANK
                 </button>
             );
         }
         if (isClicked) {
             return (
                 <button className="back" onClick={handleGoBackClick}>
-                    TOP 100 RANK
+                    TOP 3 RANK
                 </button>
             );
         }
@@ -66,32 +88,81 @@ function Search() {
     return (
         <div className="search-container">
             <Navbar transparent={true} />
+            {/* <button onClick={handleButtonClick}> */}
             <img
                 src={searchicon}
                 className="Icon"
                 alt="icon"
                 id="clickable-box"
-                onClick={handleIconClick}
+                onClick={handleButtonClick}
             />
+            {/* </button> */}
             <div className="center-container">
                 <input
                     type="text"
                     placeholder="What do you want to listen to?"
                     className="search_box"
                     value={inputText}
-                    onChange={handleInputChange}
+                    // onChange={handleInputChange}
+                    onChange={(e) => setInputText(e.target.value)}
                 />
             </div>
-            {/* {ShowWarning && <p className="warning">Please enter some text in the search box.</p>} */}
             <div className={`default_format ${songClicked ? 'clicked' : ''}`}>
-                <h2>{isClicked ? (inputText || 'Please enter some text in the search box.') : 'TOP 100 RANK'}</h2>
-                <div className="scroll_box">
-                    <div className="box" id="clickable-box" onClick={handleSongSelect}>1</div>
-                    <div className="box">2</div>
-                    <div className="box">3</div>
-                    <div className="box">4</div>
-                    <div className="box">5</div>
-                    <div className="box">6</div>
+            <div className="scroll_box">
+                <h1>  {isClicked
+                ? (inputText || 'Please enter some text in the search box.')
+                : (
+                    <span>
+                    TOP 3 RANK
+                        <div className="box">
+                            <div class="grid-container">
+                                <img 
+                                src="https://upload.wikimedia.org/wikipedia/th/4/44/%E0%B9%80%E0%B8%8A%E0%B8%9F%E0%B8%AD%E0%B8%AD%E0%B8%9F%E0%B8%A2%E0%B8%B9.png"
+                                className="pic"
+                                alt="new"
+                                />
+                                <div className="grid-item" style={{ fontSize: '16px' }}>Shape of You</div>
+                                <div className="grid-item" style={{ fontSize: '16px' }}>Ed Sheeran</div>
+                            </div>
+                        </div>
+                        <div className="box">
+                            <div class="grid-container">
+                            <img 
+                                src="https://upload.wikimedia.org/wikipedia/en/a/ad/X_cover.png"
+                                className="pic"
+                                alt="new"
+                                />
+                                <div className="grid-item" style={{ fontSize: '16px' }}>Thinking Out Loud</div>
+                                <div className="grid-item" style={{ fontSize: '16px' }}>Ed Sheeran</div>
+                            </div>
+                        </div>
+                        <div className="box">
+                            <div class="grid-container">
+                                <img 
+                                src="https://upload.wikimedia.org/wikipedia/en/f/f6/Taylor_Swift_-_1989.png"
+                                className="pic"
+                                alt="new"
+                                />
+                                <div className="grid-item" style={{ fontSize: '16px' }}>Shake It Off</div>
+                                <div className="grid-item" style={{ fontSize: '16px' }}>Taylor Swift</div>
+                            </div>
+                        </div>
+                    </span>
+                )}
+                </h1>  
+                {results.map((result) => (
+                    <div key={result.number} className="box" onClick={() => handleSongSelect(result)}>
+                        <div class="grid-container">
+                        <img 
+                        src={result['pic']}
+                        className="pic"
+                        alt="new"
+                        />
+                            <div className="grid-item">{result['song name']}</div>
+                            <div className="grid-item">{result['artist']}</div>
+                        </div>
+                    </div>
+                ))}
                 </div>
                 {renderGoback()}
             </div>
@@ -101,3 +172,4 @@ function Search() {
 }
 
 export default Search;
+

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import logo from '/Users/pawitapongpaew/Documents/English-songs-search-engine-/musicmagnet/src/images/logo.png';
+import logo from '/Users/pawitapongpaew/Desktop/MusicMagnet/musicmagnet/src/images/logo.png';
 import './home.css';
 
 function Home() {

@@ -1,5 +1,10 @@
+@font-face {
+  font-family: Cinzel;
+  src: url(/Users/pawitapongpaew/Desktop/MusicMagnet/musicmagnet/src/Cinzel/Cinzel-Bold.woff);
+}
+  
   .home-container {
-    background-image: url('/Users/pawitapongpaew/Documents/English-songs-search-engine-/musicmagnet/src/images/background.jpg');
+    background-image: url('/Users/pawitapongpaew/Desktop/MusicMagnet/musicmagnet/src/images/background.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -9,12 +14,12 @@
   
   .home-logo {
     height: 30vmin;  
-    /* animation: moveLogo 5s linear infinite;  */
     margin-top: 40%;
     margin-left: 85%;
   } 
   
   .StartButton {
+    font-family: Cinzel;
     background-color: rgba(0, 0, 0, 0);
     font-size: large;
     width: 150px;
@@ -34,16 +39,4 @@
     border: 3px solid #006E71;
     color: #006E71;
   }
-
-  @keyframes moveLogo {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.8);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
   
