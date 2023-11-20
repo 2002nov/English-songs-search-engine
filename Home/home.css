@@ -1,0 +1,42 @@
+@font-face {
+  font-family: Cinzel;
+  src: url(/Users/pawitapongpaew/Desktop/MusicMagnet/musicmagnet/src/Cinzel/Cinzel-Bold.woff);
+}
+  
+  .home-container {
+    background-image: url('/Users/pawitapongpaew/Desktop/MusicMagnet/musicmagnet/src/images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    height: 100vh;
+    margin: 0;
+}
+  
+  .home-logo {
+    height: 30vmin;  
+    margin-top: 40%;
+    margin-left: 85%;
+  } 
+  
+  .StartButton {
+    font-family: Cinzel;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: large;
+    width: 150px;
+    height: 50px;
+    border: 3px solid #fff;
+    text-align: center;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    border-radius: 40px;
+    text-decoration: none;
+    margin-top: 10%;
+    margin-left: 105%;
+  }
+  
+  .StartButton:hover {
+    background-color: white;
+    border: 3px solid #006E71;
+    color: #006E71;
+  }
+  

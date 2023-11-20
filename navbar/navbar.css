@@ -1,0 +1,77 @@
+@font-face {
+    font-family: Cinzel;
+    src: url(/Users/pawitapongpaew/Desktop/MusicMagnet/musicmagnet/src/Cinzel/Cinzel-Bold.woff);
+}
+
+.navbar-container {
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+}
+
+.nav-logo {
+    height: 7vmin;
+    padding-left: 30px; 
+    padding-top: 17px;
+}
+
+.discover { 
+    font-family: Cinzel;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    border-style: none;
+    margin: 0;
+    position: absolute;
+    top: 5%;
+    right: 30%;
+    text-decoration: underline;
+    font-size: 20px; 
+}
+
+.discover:hover { 
+    border-style: none;
+    color: #006E71;
+    transform: scale(1.1);
+}
+
+.library { 
+    font-family: Cinzel;
+    background-color: rgba(0, 0, 0, 0);
+    border-style: none;
+    color: white;
+    margin: 0;
+    position: absolute;
+    top: 5%;
+    right: 17%;
+    font-size: 20px; 
+}
+
+.library:hover { 
+    border-style: none;
+    color: #006E71;
+    transform: scale(1.1);
+}
+
+.listener {
+    font-family: Cinzel;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    margin: 0;
+    border: 2px solid #fff;
+    position: absolute;
+    top: 3.25%;
+    right: 4%;
+    font-size: 20px; 
+    border-radius: 40px;
+    text-decoration: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.listener:hover {
+    background-color: white;
+    border: 3px solid #006E71;
+    color: #006E71;
+}

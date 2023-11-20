@@ -1,0 +1,194 @@
+
+@font-face {
+    font-family: Cinzel;
+    src: url(/Users/pawitapongpaew/Desktop/MusicMagnet/musicmagnet/src/Cinzel/Cinzel-Bold.woff);
+}
+
+.search-container {
+    font-family: Cinzel;
+    background-image: url('/Users/pawitapongpaew/Desktop/MusicMagnet/musicmagnet/src/images/background_1.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+}
+
+.search_box {
+    font-size: 20px;
+    width: 40%;
+    margin: 40px;
+    margin-right: 5%;
+    background-color: black;
+    border-radius: 40px;
+    padding: 10px;
+    color: white;
+    margin-bottom: 0%;
+}
+
+.Icon {
+    position: absolute;
+    top: 17%;
+    left: 65%;
+    max-width: 20px;
+    height: 20px;
+    z-index: 1;
+}
+@media screen and (max-width: 768px) {
+    .search_box {
+        width: 80%;
+    }
+    .Icon {
+        left: 50%;
+    }
+}
+
+.default_format {
+    margin-top: 20px;
+    margin-left: 22%;
+    width: 90vmin;
+    height: 62vmin;
+    padding: 30px;
+    padding-top: 10px;
+    border-radius: 40px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color:white;
+    float: left;
+}
+
+.default_format.clicked {
+    width: 80vmin;
+    height: 62vmin;
+    margin-left: 40%;
+}
+
+.song {
+    font-family: Cinzel;
+    margin-top: 13.5%;
+    width: 30vmin;
+    height: 62vmin;
+    padding: 30px;
+    padding-top: 10px;
+    border-radius: 40px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    margin-left: 15%;
+    position: absolute;
+}
+
+.warning {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.goback {
+    font-family: Cinzel;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    bottom: 19px;
+    left: 60%;
+    max-width: auto;
+    height: 20px;
+    z-index: 1;
+    color: white;
+    border-style: none;
+}
+
+.back {
+    font-family: Cinzel;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    bottom: 19px;
+    left: 45%;
+    max-width: auto;
+    height: 20px;
+    z-index: 1;
+    color: white;
+    border-style: none;
+}
+
+.goback:hover {
+    border-style: none;
+    color: #006E71;
+    transform: scale(1.1);
+}
+
+.scroll_box {
+    height:90%;
+    overflow-y: scroll;
+    scrollbar-color: black;
+}
+
+.box {
+    display: flex;
+    background-color: black;
+    color: white;
+    margin: 15px;
+    border-radius: 35px;
+    padding: 25px;
+}
+
+.grid-container {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 40px;
+}
+
+.grid-item {
+    font-size: 18px;
+    padding-top: 13px;
+    width: 200px;
+    text-align: left;
+}
+
+.scroll_lyrics {
+    color: gray;
+    font-family: cinzel;
+    margin-top: 5px;
+    text-align: center;
+    overflow-y: scroll;
+    height: 8vmin;
+}
+
+.SongName {
+    margin-top: 5px;
+    margin-bottom: 3px;
+    padding-bottom: 0px;
+}
+
+.genre {
+    color: gray;
+    font-size: 13px;
+    padding: 0%;
+    margin: 0%;
+}
+
+.Artist {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.pic {
+    width: 50px;
+    height: 45px;
+    border-radius: 25%;
+}
+
+.pic2 {
+    height: 50%;
+    width: auto;
+    border-radius: 20%;
+    margin-top: 10px;
+    margin-bottom: 0%;
+}
+.header {
+    margin-right: 20vmin;
+}
