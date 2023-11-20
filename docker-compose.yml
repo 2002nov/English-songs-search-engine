@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.3.3
+    restart: on-failure
+    ports:
+      - '9200:9200'
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - http.cors.enabled=true
+      - http.cors.allow-origin=http://localhost:3000
+      - http.cors.allow-methods=POST
+      - http.cors.allow-credentials=true
+  kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:8.3.3
+    restart: on-failure
+    depends_on: ['elasticsearch']
+    ports:
+      - '5601:5601'
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
