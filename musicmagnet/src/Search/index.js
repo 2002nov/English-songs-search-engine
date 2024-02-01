@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import Navbar from '/Users/pawitapongpaew/Desktop/MusicMagnet/musicmagnet/src/navbar/navbar.js';
 import './search.css';
 import { useNavigate } from 'react-router-dom'
@@ -12,11 +11,6 @@ function Search() {
     const [Results, setResults] = useState([]);
     const [songClicked, setsongClicked] = useState(false);
     const [selectedResult, setSelectedResult] = useState(null);
-
-    // const handleInputChange = (e) => {
-    //     const newText = e.target.value;
-    //     setInputText(newText);
-    // };
 
     const navigate = useNavigate()
 
@@ -80,8 +74,6 @@ function Search() {
     return (
         <div className="search-container">
             <Navbar transparent={true} />
-            {/* <form onSubmit={handleFormSubmit}> */}
-            {/* <button onClick={handleButtonClick}> */}
             <img
                 src={searchicon}
                 type="button"
@@ -90,7 +82,6 @@ function Search() {
                 id="clickable-box"
                 onClick={handleButtonClick}
             />
-            {/* </button> */}
             <div className="center-container">
                 <input
                     type="text"
@@ -145,19 +136,6 @@ function Search() {
                     </span>
                 )}
                 </h1>  
-                {/* {Results.map((result) => (
-                    <div className="box" onClick={() => handleSongSelect(result)}>
-                        <div class="grid-container">
-                        <img 
-                        src={result['pic']}
-                        className="pic"
-                        alt="new"
-                        />
-                            <div className="grid-item">{result['songName']}</div>
-                            <div className="grid-item">{result['artist']}</div>
-                        </div>
-                    </div>
-                ))} */}
                 </div>
                 {renderGoback()}
             </div>

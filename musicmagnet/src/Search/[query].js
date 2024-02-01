@@ -146,18 +146,15 @@ const QuerySearch = () => {
         id="clickable-box"
         onClick={() => navigate(`/search/${inputText}`)}
         />
-      {/* </button> */}
         <div className="center-container">
         <input
             type="text"
             placeholder="What do you want to listen to?"
             className="search_box"
             value={inputText}
-          // onChange={handleInputChange}
             onChange={(e) => setInputText(e.target.value)}
         />
         </div>
-      {/* </form> */}
         <div className={`default_format ${songClicked ? "clicked" : ""}`}>
         <div className="scroll_box">
             <h1>
